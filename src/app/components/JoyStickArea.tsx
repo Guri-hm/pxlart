@@ -2,7 +2,15 @@ import styles from "./joystick.module.css";
 import { coordinate } from "./GetPositionInfo";
 import { CursorType } from "./Cursors";
 import Zoom from './Zoom';
-import { Joystick, IJoystickUpdateEvent } from 'react-joystick-component';
+import { Joystick } from 'react-joystick-component';
+
+type IJoystickUpdateEvent = {
+    type: string;
+    x: number | null;
+    y: number | null;
+    direction: string | null;
+    distance: number | null;
+};
 
 type Props = {
     setCanvasPoint: any;
