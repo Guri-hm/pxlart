@@ -41,7 +41,8 @@ jobs:
           #                          プロジェクトページなら /<リポジトリ名>
           #                          カスタムドメインやユーザーページなら空文字
           NEXT_PUBLIC_API_BASE: ${{ vars.NEXT_PUBLIC_API_BASE || 'https://solopg.com' }}
-          BASE_PATH: ${{ vars.BASE_PATH || '' }}
+          # カスタムドメイン(pxlart.solopg.com)はルート配信のため BASE_PATH は空
+          BASE_PATH: ''
         run: npm run build
 
       - name: Setup Pages
