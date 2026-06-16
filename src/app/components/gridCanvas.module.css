@@ -1,0 +1,11 @@
+.gridCanvas {
+    /* z-indexが下の要素をクリックできる */
+    pointer-events: none;
+}
+
+@media print {
+    .gridCanvas {
+        transform: scale(1.0) !important;
+    }
+
+}

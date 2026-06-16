@@ -1,0 +1,38 @@
+.cover {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.picker {
+    border: lightgray 1px solid;
+    border-radius: 10px;
+}
+
+.popover {
+    position: absolute;
+    z-index: 2;
+    visibility: visible;
+    top: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+    .dMd50 {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .dMd50 {
+        width: unset;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .dMdNone {
+        display: none !important;
+    }
+}

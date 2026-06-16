@@ -1,0 +1,16 @@
+.cursor {
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    position: fixed;
+    font-size: 20px;
+    margin: 0;
+    z-index: 999;
+
+}
+
+@media screen and (min-width: 769px) {
+    .cursor {
+        display: none,
+    }
+}

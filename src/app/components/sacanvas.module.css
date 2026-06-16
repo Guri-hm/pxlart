@@ -1,0 +1,18 @@
+.cnvsSelectAreaCanvas {}
+
+.cnvsDragCanvas {
+    /* &:hover {
+        cursor: move;
+    }
+
+    &:active {
+        pointer-events: none;
+    } */
+    pointer-events: none;
+
+    /* background-color: chartreuse; */
+}
+
+.move {
+    cursor: move;
+}

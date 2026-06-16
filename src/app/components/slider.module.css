@@ -1,0 +1,41 @@
+.cover {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.popover {
+    position: absolute;
+    z-index: 2;
+    top: 90px;
+    border: lightgray 1px solid;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #FDFDFD;
+}
+
+.panel {
+    width: 200px;
+    padding: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .dMd50 {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .dMd50 {
+        width: unset;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .dMdNone {
+        display: none !important;
+    }
+}

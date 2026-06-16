@@ -1,0 +1,9 @@
+.zoomButtons {
+    padding: 0px 10px;
+    background-color: #f3f3f3;
+    border-radius: 35px;
+}
+
+.zoomIcon>svg {
+    font-size: 40px;
+}

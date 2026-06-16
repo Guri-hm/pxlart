@@ -1,0 +1,47 @@
+.iconStyle {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .dMd50 {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .dMd50 {
+        width: unset;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .dMdNone {
+        display: none !important;
+    }
+}
+
+.iconStyleForSlider {
+    position: absolute;
+    bottom: 0;
+}
+
+.closeIcon {
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.largeIcon>svg {
+    font-size: 50px;
+}
+
+.opacity30 {
+    opacity: 0.3;
+}
+
+.opacity30:hover {
+    opacity: 1.0;
+}
+
+@media screen and (max-width: 768px) {}

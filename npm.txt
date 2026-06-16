@@ -1,0 +1,15 @@
+npm install next react react-dom
+npm install react-color --save
+npm install reactcss --save
+npm install react-icons --save
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+npm i @react-hookz/web
+npm install qrcode.react
+npm i jotai
+npm install @mui/lab
+npm i react-joystick-
+npm install @dnd-kit/core
+npm install @dnd-kit/modifiers
+npm install @emotion/react
+npm i react-joystick-component

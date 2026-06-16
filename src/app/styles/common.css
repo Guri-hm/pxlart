@@ -1,0 +1,172 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'DotGothic16', sans-serif;
+    /* font-family: 'Noto Sans JP', sans-serif; */
+    font-weight: 400;
+    font-size: 1.6rem;
+    font-display: swap;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* height: 100vh; */
+    height: calc(var(--vh, 1vh) * 100);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    background-color: #FDFDFD;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 500;
+}
+
+h2 {
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+:root {
+    --color-palet-height: 70px;
+}
+
+main {
+    flex-grow: 1;
+    display: inherit;
+    flex-direction: inherit;
+}
+
+/* Header */
+header {
+    width: 100%;
+    z-index: 1;
+    border-bottom: 1px solid #cccccc;
+}
+
+header>*>div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+header>*>div>*>img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Error page */
+.error {
+    text-align: center;
+    margin-top: 10rem
+}
+
+.grid {
+    display: grid;
+}
+
+.f-grow-1 {
+    flex-grow: 1;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.grid-col {
+    grid-auto-flow: column;
+    direction: ltr;
+}
+
+.sketch-picker {
+    box-shadow: none !important;
+}
+
+/* 画面サイズ 600px 未満 */
+@media (max-width: 599px) {}
+
+/* 画面サイズ 600px 以上 1200px 未満 */
+@media (max-width: 1200px) {}
+
+/* 画面サイズ 1200px 以上 */
+@media (min-width: 1201px) {}
+
+.m-0 {
+    margin: 0px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.g-10 {
+    gap: 10px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.d-none {
+    display: none;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.events-none {
+    pointer-events: none;
+}
+
+
+@media print {
+    .no-print {
+        display: none;
+    }
+    /* 効果ないかも */
+    body {
+        height: 100vh;
+    }
+
+    .print {
+        display: unset;
+    }
+}
+
+@media print {
+    .p-10-print {
+        padding: 10px;
+    }
+}
