@@ -64,6 +64,7 @@ import Brightness1Icon from '@mui/icons-material/Brightness1';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import ContrastIcon from '@mui/icons-material/Contrast';
 import GrayscaleDialog from './GrayscaleDialog';
+import CsvDialog from './CsvDialog';
 
 
 export default function Pxlart() {
@@ -97,6 +98,7 @@ export default function Pxlart() {
   const [openReset, setOpenReset] = useState(false)
   const [openBinarization, setOpenBinarization] = useState(false)
   const [openGrayscale, setOpenGrayscale] = useState(false)
+  const [openCsvDialog, setOpenCsvDialog] = useState(false)
   const [strageDialogOpen, setStrageDialogOpen] = useState(false)
   const [message, setMessage] = useState<AlertMessageType>({ type: AlertColor.info, message: "", open: false });
   const [wrapperSize, setWrapperSize] = useState<CanvasWrapper>();
@@ -122,6 +124,22 @@ export default function Pxlart() {
       document.body.style.touchAction = '';
     };
   }, []);
+
+  // キーボードショートカット: Ctrl+Z → undo / Ctrl+Y or Ctrl+Shift+Z → redo
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!e.ctrlKey && !e.metaKey) return;
+      if (e.key === 'z' && !e.shiftKey) {
+        e.preventDefault();
+        undo();
+      } else if (e.key === 'y' || (e.key === 'z' && e.shiftKey)) {
+        e.preventDefault();
+        redo();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [allStrokes, undoStrokes]);
   useEffect(() => {
     if (strageStrokes.length > 0) {
       setStrageDialogOpen(true);
@@ -249,6 +267,15 @@ export default function Pxlart() {
         setMessage({ type: AlertColor.error, message: "予期しないエラーが発生しました", open: true })
       }
     }
+  };
+
+  const importCsv = (importedStrokes: AllStrokesType, importedGrid: GridCountType) => {
+    clearCanvas(canvasRef);
+    drawAllstroke(canvasRef, importedStrokes, pxlSize);
+    setAllStrokes(importedStrokes);
+    setGrid(importedGrid);
+    setUndoStrokes({ strokes: [] });
+    setMessage({ type: AlertColor.success, message: "CSVから読み込みました", open: true });
   };
 
   const saveCurrentStrokes = () => {
@@ -521,11 +548,11 @@ export default function Pxlart() {
                       </IconButton>} label={<Typography className={styles.dMdNone}>PNG形式で保存</Typography>} />
                     </div>
                   </Tooltip>
-                  <Tooltip arrow title="CSV形式で保存" disableInteractive>
+                  <Tooltip arrow title="CSV" disableInteractive>
                     <div className={styles.dMd50}>
-                      <FormControlLabel className='mx-auto' value="exportCsv" control={<IconButton aria-label="exportCsv" onClick={() => exportCsv()} className={styles.iconStyle}>
+                      <FormControlLabel className='mx-auto' value="csv" control={<IconButton aria-label="csv" onClick={() => setOpenCsvDialog(true)} className={styles.iconStyle}>
                         <CsvIcon />
-                      </IconButton>} label={<Typography className={styles.dMdNone}>CSV形式で保存</Typography>} />
+                      </IconButton>} label={<Typography className={styles.dMdNone}>CSV</Typography>} />
                     </div>
                   </Tooltip>
                   <Tooltip arrow title="白黒変換" disableInteractive>
@@ -589,6 +616,13 @@ export default function Pxlart() {
           <ResetDialog open={openReset} setOpen={setOpenReset} clickEvent={resetStrokes} ></ResetDialog>
           <BinarizationDialog open={openBinarization} setOpen={setOpenBinarization} canvasRef={canvasRef} grid={grid} pxlSize={pxlSize} allStrokes={allStrokes}></BinarizationDialog>
           <GrayscaleDialog open={openGrayscale} setOpen={setOpenGrayscale} canvasRef={canvasRef} grid={grid} pxlSize={pxlSize} allStrokes={allStrokes} setAllStrokes={setAllStrokes}></GrayscaleDialog>
+          <CsvDialog
+            open={openCsvDialog}
+            onClose={() => setOpenCsvDialog(false)}
+            onExport={exportCsv}
+            onImport={importCsv}
+            onError={(msg) => setMessage({ type: AlertColor.error, message: msg, open: true })}
+          />
           <CustomizedSnackbars></CustomizedSnackbars>
           <Box sx={{ mx: 'auto', height: 30 }}>
             <BottomNavigation showLabels onChange={handleValueChange} sx={{ height: 'auto' }}>
