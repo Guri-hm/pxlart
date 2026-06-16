@@ -14,8 +14,8 @@ import { GridCountType } from './gridTypes';
 import { Mode } from './modeTypes';
 
 // CSV の最大許容グリッドサイズ
-const MAX_COLS = 100;
-const MAX_ROWS = 100;
+const MAX_COLS = 30;
+const MAX_ROWS = 30;
 // 1セルの最大文字数（カラーコード "transparent" or "#RRGGBB" 相当）
 const MAX_CELL_LEN = 16;
 // HEX カラーコード or "transparent" のみ許可
