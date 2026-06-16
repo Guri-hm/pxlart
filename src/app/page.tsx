@@ -32,13 +32,13 @@ export default function Page({ }) {
     <>
       <ThemeProvider theme={theme}>
         <div className="mx-auto m-10">
-          <Image src={`${process.env.root}/images/logo.png`} alt="logo" width={150} height={150} />
+          <Image src="/images/logo.png" alt="logo" width={150} height={150} />
         </div>
         <h1 className="mx-auto">ドット絵ツクール</h1>
         <Box sx={{ flexGrow: 1, maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', width: '100%' }}>
           <Grid container spacing={2}>
             <Grid item xs={10} md={6} className="mx-auto">
-              <Link href={`${process.env.root}/edit`} underline="none">
+              <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/edit`} underline="none">
 
                 <Item>
                   <h2>ドット絵作成</h2>
@@ -49,7 +49,7 @@ export default function Page({ }) {
               </Link>
             </Grid>
             <Grid item xs={10} md={6} className="mx-auto">
-              <Link href={`${process.env.root}/nonogram`} underline="none">
+              <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/nonogram`} underline="none">
                 <Item>
                   <h2>お絵描きロジック</h2>
                   <p>自分や他の人が作成したお絵描きロジックに挑戦できる</p>

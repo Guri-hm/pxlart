@@ -27,7 +27,8 @@ const nextConfig = {
         // バックエンド Flask API のベース URL (ポート含む)
         // 例: https://solopg.com  または  https://localhost:800
         NEXT_PUBLIC_API_BASE: process.env.NEXT_PUBLIC_API_BASE || (isProd ? 'https://solopg.com' : 'https://localhost:800'),
-        root: basePath,
+        // basePath のクライアント公開用。NEXT_PUBLIC_ プレフィックスで確実に動作
+        NEXT_PUBLIC_BASE_PATH: basePath,
     },
 }
 

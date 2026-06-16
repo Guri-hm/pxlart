@@ -117,7 +117,7 @@ function ConfirmationDialogRaw(props: ConfirmationDialogRawProps) {
         setValue((event.target as HTMLInputElement).value);
     };
     const handleBack = () => {
-        window.location.replace(`${process.env.root}/nonogram`)
+        window.location.replace(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/nonogram`)
     };
     const handleRetry = () => {
         window.location.reload();
@@ -143,7 +143,7 @@ function ConfirmationDialogRaw(props: ConfirmationDialogRawProps) {
                     <DialogContent dividers>
                         答えは「{answer}」
                         <Box sx={{ my: '2rem', display: 'flex', justifyContent: 'center', mx: 'auto', maxWidth: 300 }} >
-                            <img src={url} className={styles.img} />
+                            <img src={url} className={styles.img} alt="" />
                         </Box>
                     </DialogContent>
                     <DialogActions>

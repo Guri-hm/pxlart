@@ -41,7 +41,7 @@ const BinarizedImg = ({ canvasRef, threshold, setThreshold, grid, pxlSize, allSt
     return (
         <>
             <Box sx={{ my: '2rem', mx: 'auto', maxWidth: 300 }} >
-                <img ref={binarizedImgRef} className={styles.img} />
+                <img ref={binarizedImgRef} className={styles.img} alt="" />
             </Box>
             <Typography gutterBottom>しきい値</Typography>
             <Brightness1OutlinedIcon />

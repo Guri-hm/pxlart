@@ -17,7 +17,7 @@ const QRCode: FC<QRCodeProps> = (props) => {
             level={"L"}
             includeMargin={false}
             imageSettings={{
-                src: `${process.env.root}/favicons/favicon.ico`,
+                src: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/favicons/favicon.ico`,
                 x: undefined,
                 y: undefined,
                 height: 24,

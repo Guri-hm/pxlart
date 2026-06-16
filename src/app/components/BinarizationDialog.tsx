@@ -59,7 +59,7 @@ const BinarizedImg = ({ canvasRef, threshold, setThreshold, grid, pxlSize, allSt
     return (
         <>
             <Box sx={{ my: '2rem', mx: 'auto', maxWidth: 300 }} >
-                <img ref={binarizedImgRef} className={styles.img} />
+                <img ref={binarizedImgRef} className={styles.img} alt="" />
             </Box>
             <Typography gutterBottom>しきい値</Typography>
             <Brightness1OutlinedIcon />
@@ -168,7 +168,7 @@ export default function BinarizationDialog(params: DialogProps) {
                         throw new Error(json["message"])
                     }
                     const uri = new URL(window.location.href);
-                    const redirectUrl = `${uri.origin}${process.env.root}/nonogram/${json["uuid"]}`;
+                    const redirectUrl = `${uri.origin}${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/nonogram/${json["uuid"]}`;
                     setUrl(redirectUrl);
                     setCode(json["code"]);
 

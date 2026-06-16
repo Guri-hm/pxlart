@@ -18,7 +18,7 @@ export const Droppable: FC<DroppableProp> = ({ id }) => {
   return (
     <>
       <Image ref={setNodeRef}
-        src={`${process.env.root}/images/gomibako${isOver ? '' : '_futa'}.svg`}
+        src={`/images/gomibako${isOver ? '' : '_futa'}.svg`}
         className={styles.img}
         width={100}
         height={100}

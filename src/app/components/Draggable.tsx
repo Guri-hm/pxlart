@@ -86,9 +86,9 @@ export const Draggable = (params: Props) => {
 
                 </CardContent>
                 <CardActions>
-                    <Link href={`${process.env.root}/nonogram/${params.item.uuid}`} sx={{ marginLeft: '10px' }}>遊ぶ</Link>|
+                    <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/nonogram/${params.item.uuid}`} sx={{ marginLeft: '10px' }}>遊ぶ</Link>|
                     {uri && (
-                        <NonogramQr url={`${uri.origin}${process.env.root}/nonogram/${params.item.uuid}`}></NonogramQr>
+                        <NonogramQr url={`${uri.origin}${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/nonogram/${params.item.uuid}`}></NonogramQr>
                     )}
                 </CardActions>
             </Card>

@@ -58,12 +58,12 @@ const Header = (props: Props) => {
                 display: { sm: 'flex' }, textWrap: 'nowrap'
             }}>
                 <ListItem disablePadding>
-                    <ListItemButton component="a" href={`${process.env.root}/edit`}>
+                    <ListItemButton component="a" href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/edit`}>
                         <ListItemText primary="ドット絵作成" />
                     </ListItemButton>
                 </ListItem >
                 <ListItem disablePadding>
-                    <ListItemButton component="a" href={`${process.env.root}/nonogram`}>
+                    <ListItemButton component="a" href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/nonogram`}>
                         <ListItemText primary="お絵描きロジック" />
                     </ListItemButton>
                 </ListItem>
@@ -75,7 +75,7 @@ const Header = (props: Props) => {
             <div className="container">
                 <div>
                     <Link href="/">
-                        <Image src={`${process.env.root}/images/logo.png`} alt="logo" width={100} height={100} />
+                        <Image src="/images/logo.png" alt="logo" width={100} height={100} />
                     </Link>
                     <Box
                         component="nav"

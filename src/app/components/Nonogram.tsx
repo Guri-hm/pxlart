@@ -257,7 +257,7 @@ export default function Nonogram({
           <h3 className='text-center m-10'>{params.title}</h3>
           <div className='d-none'>
             {uri && (
-              <QRCode url={`${uri.origin}${process.env.root}/nonogram/${params.uuid}`}></QRCode>
+              <QRCode url={`${uri.origin}${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/nonogram/${params.uuid}`}></QRCode>
             )}
           </div>
           <div className='d-flex f-grow-1'>
@@ -377,7 +377,7 @@ export default function Nonogram({
           <div className='d-none print text-center'>
             <div>下のQRコードを読み取って解答してください</div>
             {uri && (
-              <QRCode url={`${uri.origin}${process.env.root}/nonogram/${params.uuid}`}></QRCode>
+              <QRCode url={`${uri.origin}${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/nonogram/${params.uuid}`}></QRCode>
             )}
           </div>
           <LocalStrageDialog open={strageDialogOpen} setOpen={setStrageDialogOpen} mainEvent={loadNonogramStatus} removeStrage={removeLocalStrage}></LocalStrageDialog>
