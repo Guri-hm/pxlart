@@ -45,6 +45,11 @@ jobs:
           BASE_PATH: ''
         run: npm run build
 
+      - name: Overwrite 404.html with SPA redirect
+        # next build が not-found.js から 404.html を生成し public/404.html を上書きするため、
+        # ビルド後に public/404.html (SPAリダイレクトスクリプト入り) で上書きし直す。
+        run: cp public/404.html build/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
