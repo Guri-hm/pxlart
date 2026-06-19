@@ -4,23 +4,28 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    // SPA for GitHub Pages
-    // https://github.com/rafgraph/spa-github-pages
-    //
-    // GitHub Pages でビルド後に追加されたページ (例: /nonogram/[新しいuuid]/) への
-    // 直接アクセス時に 404 が返される問題を回避するためのリダイレクト。
-    // pathSegmentsToKeep:
-    //   1 = プロジェクトページ (https://<user>.github.io/<repo>/)
-    //   0 = ユーザー/組織ページ or カスタムドメイン (https://<user>.github.io/)
-    var pathSegmentsToKeep = 0;
+    (function() {
+      var l = window.location;
+      // /nonogram/<uuid> へのアクセスは、ビルド後に追加されたUUIDで静的ファイルが存在しない場合がある。
+      // UUIDを sessionStorage に保存し、必ず静的ファイルが存在する __placeholder__ ページへリダイレクトする。
+      // NonogramClient が sessionStorage からUUIDを読み取りAPIでデータを取得する。
+      var nonogramMatch = l.pathname.match(/^\/nonogram\/([^\/]+)\/?$/);
+      if (nonogramMatch && nonogramMatch[1] !== '__placeholder__') {
+        sessionStorage.setItem('nonogram_redirect_uuid', nonogramMatch[1]);
+        l.replace(l.origin + '/nonogram/__placeholder__/');
+        return;
+      }
 
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.host + l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
+      // その他のページ (例: /edit など) は従来どおりルートにSPAリダイレクト
+      // pathSegmentsToKeep = 0: カスタムドメイン / ユーザーページ用
+      var pathSegmentsToKeep = 0;
+      l.replace(
+        l.protocol + '//' + l.host + l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    })();
   </script>
 </head>
 <body></body>

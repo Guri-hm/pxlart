@@ -228,7 +228,8 @@ export default function useStrokes() {
                     mode: Mode.DRAW
                 }
                 //軽量化のために塗りがない場所は保存しない
-                if (objectEquals(tmpPxl.color, NaNColor)) {
+                // NaNColor (ctxが未定義) と透明ピクセル (a===0, 未描画) は除外する
+                if (objectEquals(tmpPxl.color, NaNColor) || (tmpPxl.color !== undefined && tmpPxl.color.a === 0)) {
                     continue;
                 }
                 tmpPxls.push(tmpPxl);
